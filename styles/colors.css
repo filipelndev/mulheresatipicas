@@ -1,0 +1,45 @@
+/* Paleta de cores inspirada na logo Mulheres Atípicas */
+:root {
+  --red: #E94F4A; /* vermelho logo */
+  --navy: #22223B; /* azul escuro logo */
+  --blue: #2D5C7F; /* azul logo */
+  --yellow: #FFD166; /* amarelo logo */
+  --pink: #F7CAC9; /* rosa logo */
+  --beige: #FBE8D3; /* bege logo */
+  --background: #F3EAF7; /* fundo inspirado na logo */
+  --text: #22223B; /* cor de texto principal */
+}
+
+body {
+  background-color: white;
+  color: var(--text);
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  color: var(--navy);
+}
+
+.button {
+  background-color: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.section {
+  background-color: var(--beige);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.highlight {
+  background-color: var(--yellow);
+  color: var(--navy);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
