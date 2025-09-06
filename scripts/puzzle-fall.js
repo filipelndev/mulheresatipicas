@@ -27,29 +27,46 @@ function dropPuzzlePiece(card) {
   const cardWidth = card.offsetWidth;
   const cardHeight = card.offsetHeight;
   const src = puzzleImages[Math.floor(Math.random() * puzzleImages.length)];
-  const left = Math.random() * (cardWidth - 60) + 10;
+
+  // posição horizontal aleatória, mas garantindo que não caia muito grudado nas bordas
+  const left = Math.random() * (cardWidth - 80) + 20;
+
   const piece = createPuzzlePiece(src, left, cardHeight);
   card.appendChild(piece);
-  const duration = 2000 + Math.random() * 2000;
+
+  // duração variável entre 2.5s e 5s
+  const duration = 1000 + Math.random() * 1500;
+
   piece.animate([
-    { top: '-60px', opacity: 0.85 },
-    { top: cardHeight - 40 + 'px', opacity: 0.85 }
+    { top: '-60px', opacity: 0.9 },
+    { top: cardHeight - 40 + 'px', opacity: 0.9 }
   ], {
     duration,
     easing: 'ease-in',
     fill: 'forwards'
   });
+
+  // remover depois de cair
   setTimeout(() => {
     if (piece.parentNode) piece.parentNode.removeChild(piece);
-  }, duration + 100);
+  }, duration + 200);
 }
 
 function startPuzzleRain() {
   const card = document.getElementById('institucional');
   if (!card) return;
-  setInterval(() => {
-    dropPuzzlePiece(card);
-  }, 500);
+
+  function scheduleNextDrop() {
+    // tempo aleatório entre 600ms e 1500ms
+    const delay = 200 + Math.random() * 900;
+
+    setTimeout(() => {
+      dropPuzzlePiece(card);
+      scheduleNextDrop();
+    }, delay);
+  }
+
+  scheduleNextDrop();
 }
 
 document.addEventListener('DOMContentLoaded', startPuzzleRain);
